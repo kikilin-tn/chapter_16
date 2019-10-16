@@ -1,8 +1,13 @@
-"""返回含有檔案的標頭"""
+"""
+印出檔案標頭及其位置
+藉此可了解每個標頭的索引值
+"""
 import csv
 
 filename = 'sitka_weather_2018_full.csv'
 with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
-    print(header_row)
+
+    for index, column_header in enumerate(header_row):
+        print(index, column_header)
