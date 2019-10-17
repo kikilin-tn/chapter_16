@@ -1,8 +1,5 @@
-"""
-印出檔案標頭及其位置
-藉此可了解每個標頭的索引值
-"""
 import csv
+from matplotlib import pyplot as plt
 
 #Get high temperature form file
 filename = 'sitka_weather_2018_full.csv'
@@ -14,6 +11,18 @@ with open(filename) as f:
         #print(index, column_header)
     highs = []
     for row in reader:
-        highs.append(row[8])
+        high = row[8]
+        highs.append(high)
 
     print(highs)
+
+#plot data
+fig = plt.figure(dpi=128, figsize=(10,6))
+plt.plot(highs, c='red')
+
+plt.title('Daily high temperatures, 2018', fontsize=24)
+plt.xlabel('', fontsize=16)
+plt.ylabel('temperature(F)', fontsize=16)
+plt.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
